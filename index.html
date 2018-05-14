@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+    <script>
+      const { pathname } = window.location;
+      getPreload(pathname);
+
+      function getPreload(pathname) {
+        // preload a JavaScript file depending on what route we are on.
+        const a = document.createElement("link");
+        a.setAttribute("rel", "preload");
+        a.setAttribute("as", "script");
+
+        let href = "";
+
+        switch (pathname) {
+          case "/a":
+            href = "./a.js";
+            break;
+          case "/b":
+            href = "./b.js";
+            break;
+          case "/c":
+            href = "./c.js";
+            break;
+        }
+
+        a.setAttribute("href", href);
+        document.head.appendChild(a);
+      }
+    </script>
+    </head>
+    <body>
+      <div id="container"></div>
+  </body>
+</html>
